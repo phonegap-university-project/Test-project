@@ -1,12 +1,12 @@
 import $$ from 'dom7';
-import Framework7 from './framework7-custom.js';
+import Framework7 from 'framework7/framework7.esm.bundle.js';
 
 // Import F7 Styles
-import '../css/framework7-custom.less';
+import 'framework7/css/framework7.bundle.css';
 
 // Import Icons and App Custom Styles
 import '../css/icons.css';
-import '../css/app.less';
+import '../css/app.css';
 // Import Cordova APIs
 import cordovaApp from './cordova-app.js';
 // Import Routes
@@ -14,7 +14,7 @@ import routes from './routes.js';
 
 var app = new Framework7({
   root: '#app', // App root element
-  id: 'com.university.travelpal', // App bundle ID
+  id: 'io.framework7.travelpal', // App bundle ID
   name: 'Travel Pal', // App name
   theme: 'auto', // Automatic theme detection
   // App root data
@@ -49,6 +49,12 @@ var app = new Framework7({
     helloWorld: function () {
       app.dialog.alert('Hello World!');
     },
+    convertCurrency: function() {
+      convertCurrencyAPIAndResult();
+    },
+    clearCurrency: function() {
+      clearCurrency();
+    }
   },
   // App routes
   routes: routes,
@@ -77,14 +83,23 @@ var app = new Framework7({
   },
 });
 
-// Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
+function convertCurrencyAPIAndResult() {
+  var value = $$('#currencyUSDInput').val();
+  var convertToCurrency =  $$('#currencyUSDInput').data('currency');
+  if(value && convertToCurrency) {
+    app.request({
+      url: 'http://apilayer.net/api/live?access_key=99f16c048a0f93898b09740b39748aca&convert?source=USD&currencies='+ convertToCurrency +'&format=1',
+      async: false,
+      statusCode: {
+        200: function (result) {
+          var response = JSON.parse(result.response);
+          app.dialog.alert((response.quotes.USDINR * value).toFixed(2) + ' in ' + convertToCurrency);
+        }
+      }
+    })
+  }
+}
 
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
-
-  // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
-});
+function clearCurrency() {
+  $$('#currencyUSDInput').val('');
+}

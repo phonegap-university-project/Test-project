@@ -1,9 +1,53 @@
 var cordovaApp = {
   f7: null,
+  db: null,
+  deviceReady: function () {
+    document.addEventListener('deviceready', function () {
+      SetupLocationService();
+      SetupDatabaseAndInitialize();
+    }, false);
+
+    function SetupLocationService() {
+      cordova.plugins.diagnostic.isGpsLocationAvailable(function (available) {
+        if (!available) {
+          cordova.plugins.locationAccuracy.request(function (success) {
+            console.log("Successfully requested high accuracy location mode: " + success.message);
+          },
+            function onRequestFailure(error) {
+              console.error("Accuracy request failed: error code=" + error.code + "; error message=" + error.message);
+              if (error.code === cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
+                if (confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")) {
+                  cordova.plugins.diagnostic.switchToLocationSettings();
+                } else {
+                  // Exit App
+                  window.navigator.app.exitApp();
+                }
+              }
+            }, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
+        }
+      });
+    }
+
+    function SetupDatabaseAndInitialize() {
+      var db = window.sqlitePlugin.openDatabase({ name: "travelpal.db", location: 'default' });
+
+      db.transaction(function (transaction) {
+        transaction.executeSql('CREATE TABLE IF NOT EXISTS Weather (id integer primary key, city text, country text)', [],
+          function (tx, result) {
+            console.log("Table created successfully");
+          },
+          function (error) {
+            alert("Error occurred while creating the table.");
+          });
+      });
+
+
+    }
+  },
   /*
   This method hides splashscreen after 2 seconds
   */
-  handleSplashscreen: function() {
+  handleSplashscreen: function () {
     var f7 = cordovaApp.f7;
     if (!window.navigator.splashscreen || f7.device.electron) return;
     setTimeout(() => {
@@ -82,6 +126,9 @@ var cordovaApp = {
   init: function (f7) {
     // Save f7 instance
     cordovaApp.f7 = f7;
+
+    // Device Ready
+    cordovaApp.deviceReady();
 
     // Handle Android back button
     cordovaApp.handleAndroidBackButton();

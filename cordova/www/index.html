@@ -28,56 +28,26 @@
   <div id="app"class="theme-dark">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar"></div>
-    <!-- Left panel with cover effect-->
-    <div class="panel panel-left panel-cover theme-dark">
-      <div class="view">
-        <div class="page">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="title">Left Panel</div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="block">Left panel content goes here</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Right panel with reveal effect-->
-    <div class="panel panel-right panel-reveal theme-dark">
-      <div class="view">
-        <div class="page">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="title">Right Panel</div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="block">Right panel content goes here</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+
     <!-- Views/Tabs container -->
     <div class="views tabs safe-areas">
       <!-- Tabbar for switching views-tabs -->
       <div class="toolbar toolbar-bottom tabbar-labels">
         <div class="toolbar-inner">
-          <a href="#view-home" class="tab-link tab-link-active">
+          <a href="/" class="tab-link">
             <i class="icon f7-icons if-not-md">home_fill</i>
             <i class="icon material-icons if-md">home</i>
             <span class="tabbar-label">Home</span>
           </a>
-          <a href="#view-catalog" class="tab-link">
-            <i class="icon f7-icons if-not-md">list_fill</i>
-            <i class="icon material-icons if-md">view_list</i>
-            <span class="tabbar-label">Catalog</span>
+          <a href="/weather/" class="tab-link">
+            <i class="icon f7-icons if-not-md">cloud_fill</i>
+            <i class="icon material-icons if-md">cloud</i>
+            <span class="tabbar-label">Weather</span>
           </a>
-          <a href="#view-settings" class="tab-link">
-            <i class="icon f7-icons if-not-md">settings_fill</i>
-            <i class="icon material-icons if-md">settings</i>
-            <span class="tabbar-label">Settings</span>
+          <a href="/currency/" class="tab-link">
+            <i class="icon f7-icons if-not-md">world_fill</i>
+            <i class="icon material-icons if-md">world</i>
+            <span class="tabbar-label">Currency</span>
           </a>
         </div>
       </div>
@@ -95,67 +65,6 @@
       <!-- Settings View -->
       <div id="view-settings" class="view view-init tab" data-view="settings" data-url="/settings/">
         <!-- Settings page will be loaded here dynamically from /settings/ route -->
-      </div>
-    </div>
-
-
-    <!-- Popup -->
-    <div class="popup" id="my-popup">
-      <div class="view">
-        <div class="page">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="title">Popup</div>
-              <div class="right">
-                <a href="#" class="link popup-close">Close</a>
-              </div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="block">
-              <p>Popup content goes here.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Login Screen -->
-    <div class="login-screen" id="my-login-screen">
-      <div class="view">
-        <div class="page">
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">Login</div>
-            <div class="list">
-              <ul>
-                <li class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">Username</div>
-                    <div class="item-input-wrap">
-                      <input type="text" name="username" placeholder="Your username">
-                    </div>
-                  </div>
-                </li>
-                <li class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">Password</div>
-                    <div class="item-input-wrap">
-                      <input type="password" name="password" placeholder="Your password">
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="list">
-              <ul>
-                <li>
-                  <a href="#" class="item-link list-button login-button">Sign In</a>
-                </li>
-              </ul>
-              <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

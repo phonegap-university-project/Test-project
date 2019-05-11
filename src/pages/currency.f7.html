@@ -1,0 +1,43 @@
+<template>
+    <div class="page" data-page="currency">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <!-- <div class="left">
+                    <a href="#" class="back link">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div> -->
+                <div class="title">Currency Conversion</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block block-strong">
+                <div class="list no-hairlines-md">
+                    <ul>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Amount (USD):</div>
+                                    <div class="item-input-wrap">
+                                        <input type="number" id="currencyUSDInput" data-currency={{data.currency}} name="currencyUSDInput" placeholder="Amount in USD" required
+                                            validate />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="row">
+                                <a href="#" @click="$root.convertCurrency()"  class="col button button-round button-outline">Convert</a>
+                                <a href="#" @click="$root.clearCurrency()" class="col button button-round button-outline">Clear</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {}
+</script>

@@ -15,10 +15,14 @@
   "dependencies": {
     "cordova-android": "^8.0.0",
     "cordova-ios": "^5.0.1",
+    "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-request-location-accuracy": "^2.2.3",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
-    "cordova-plugin-wkwebview-engine": "^1.1.4"
+    "cordova-plugin-wkwebview-engine": "^1.1.4",
+    "cordova-sqlite-storage": "^3.2.0",
+    "cordova.plugins.diagnostic": "^4.0.12"
   },
   "cordova": {
     "plugins": {
@@ -26,7 +30,13 @@
       "cordova-plugin-keyboard": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-wkwebview-engine": {},
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova.plugins.diagnostic": {
+        "ANDROID_SUPPORT_VERSION": "28.+"
+      },
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-request-location-accuracy": {},
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "ios",

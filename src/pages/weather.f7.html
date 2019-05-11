@@ -1,0 +1,72 @@
+<template>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <!-- <div class="left">
+          <a href="#" class="back link">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div> -->
+        <div class="title">Weather</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block block-strong">
+       <div><span style="font-size: 15px" >Place: {{ user.name }}, {{user.sys.country}}</span></div>
+       <br>
+       <div>
+          <span style="font-size: 15px" >Temperature: {{user.main.temp}} °C</span>
+          <img width="30px" height="30px" src="http://openweathermap.org/img/w/{{user.weather[0].icon}}.png" >
+       </div>
+      </div>
+
+      <div class="card data-table">
+        <table>
+          <tbody>
+              <tr>
+                  <td class="label-cell">Date Time</td>
+                  <td class="numeric-cell">{{ user.dt }}</td>
+                </tr>
+            <tr>
+              <td class="label-cell">Wind</td>
+              <td class="numeric-cell">{{user.wind.speed}} m/s, {{user.wind.deg}} °</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Group</td>
+                <td class="numeric-cell">{{user.weather[0].main}}</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Cloudiness</td>
+                <td class="numeric-cell" style="text-transform: capitalize" >{{user.weather[0].description}}</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Pressure</td>
+                <td class="numeric-cell">{{user.main.pressure}} hPa</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Humidity</td>
+                <td class="numeric-cell">{{user.main.humidity}} %</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Sunrise</td>
+                <td class="numeric-cell">{{user.sys.sunrise}}</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Sunset</td>
+                <td class="numeric-cell">{{user.sys.sunset}}</td>
+            </tr>
+            <tr>
+                <td class="label-cell">Geo coords</td>
+                <td class="numeric-cell">[{{user.coord.lat}}, {{user.coord.lon}}]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>
