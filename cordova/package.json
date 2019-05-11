@@ -22,7 +22,7 @@
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-wkwebview-engine": "^1.1.4",
     "cordova-sqlite-storage": "^3.2.0",
-    "cordova.plugins.diagnostic": "^4.0.12"
+    "cordova.plugins.diagnostic": "^2.0.0"
   },
   "cordova": {
     "plugins": {
